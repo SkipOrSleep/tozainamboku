@@ -1,0 +1,23 @@
+# Usage
+# $ sudo docker-compose -f docker-compose.yml build flask
+# $ sudo docker-compose -f docker-compose.yml up -d flask
+# $ sudo docker-compose -f docker-compose.yml exec flask /bin/bash
+
+version: '3'
+services:
+  tozainamboku:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/opt/tozainamboku
+    image: tozainamboku
+    container_name: tozainamboku
+    hostname: tozainamboku
+    tty: true
+    restart: always
+    working_dir: /opt/tozainamboku/src
+    user: root
+    command: python run.py
+    ports:
+      - "5000:5000"

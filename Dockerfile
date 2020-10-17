@@ -1,5 +1,5 @@
 # base image definition
-FROM python:3.8.2
+FROM python:3.8.6
 
 # package manager updating
 RUN apt-get update

@@ -3,6 +3,7 @@ import yaml
 from flask import Flask, jsonify, request, send_from_directory
 
 app = Flask(__name__)
+app.config['JSON_AS_ASCII'] = False
 
 with open('../lib/data.yml', 'r') as datafile:
     data = yaml.safe_load(datafile)
@@ -30,4 +31,4 @@ def favicon():
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0', port=int(os.environ.get('PORT')))
+    app.run(debug=False, host=os.environ.get('HOST'), port=int(os.environ.get('PORT')))
